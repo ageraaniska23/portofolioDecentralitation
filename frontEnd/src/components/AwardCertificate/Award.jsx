@@ -20,14 +20,14 @@ export function InfiniteMovingCardsDemo() {
 
 const testimonials = [
     {
-        title: "Certified Blcokchain Practitioner (CBP)",
+        title: "Blcokchain Practitioner (CBP)",
         quote:
             "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
         name: "The S cOps Group",
         link: "https://flowbite.com/icons/",
     },
     {
-        title: "Certified Blcokchain Practitioner (CBP)",
+        title: "Certified Blcokchain Practitioner ",
         quote:
             "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness, it was the epoch of belief, it was the epoch of incredulity, it was the season of Light, it was the season of Darkness, it was the spring of hope, it was the winter of despair.",
         name: "The SecOps Group",
