@@ -1,0 +1,38 @@
+/* Hero.css */
+@keyframes move {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(calc(var(--random-y) * 1px)) translateX(calc(var(--random-x) * 1px));
+    }
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(100vw);
+    }
+}
+
+.star {
+    position: absolute;
+    background-color: #00eaff;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    opacity: 0.8;
+    animation: move var(--duration) linear infinite;
+}
+
+.falling-star {
+    position: absolute;
+    background-color: #00eaff;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    opacity: 0.9;
+    animation: fall var(--fall-duration) linear infinite;
+}
