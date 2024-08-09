@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "../../lib/utils";
+import { useFetchContractData } from "../../Data/Data";
 
 export const TextGenerateEffect = ({
     words,
@@ -25,6 +26,7 @@ export const TextGenerateEffect = ({
                 delay: stagger(0.1),
             }
         );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scope.current]);
 
     const renderWords = () => {
@@ -56,10 +58,17 @@ export const TextGenerateEffect = ({
     );
 };
 
-const words = `
-I am an undergraduate with a Bachelor's degree in Computer Systems from Sriwijaya University. I have a passion for embracing new challenges and am always eager to learn new things. Currently, I am honing my skills in the blockchain field, particularly as a Solidity Developer and Web3 Developer. I participated in a bootcamp program focused on Solidity Blockchain Development, where I dedicated approximately six months to training. During this program, I served as the team lead for a Web3 project and successfully completed it. Additionally, I have participated in the Fresh Graduate Academy training provided by Kominfo, which focused on Cisco CCNA. I believe my ability to learn quickly and adaptively is a valuable asset in the ever-evolving technology industry.
-`;
+// const words = `
+// I am an undergraduate with a Bachelor's degree in Computer Systems from Sriwijaya University. I have a passion for embracing new challenges and am always eager to learn new things. Currently, I am honing my skills in the blockchain field, particularly as a Solidity Developer and Web3 Developer. I participated in a bootcamp program focused on Solidity Blockchain Development, where I dedicated approximately six months to training. During this program, I served as the team lead for a Web3 project and successfully completed it. Additionally, I have participated in the Fresh Graduate Academy training provided by Kominfo, which focused on Cisco CCNA. I believe my ability to learn quickly and adaptively is a valuable asset in the ever-evolving technology industry.
+// `;
+
 
 export function TextGenerateEffectDemo() {
-    return <TextGenerateEffect words={words} />;
+
+    const { aboutMe, isLoading } = useFetchContractData();
+
+    if (isLoading) {
+        return <div>Loading...</div>; 
+    }
+    return <TextGenerateEffect words={aboutMe} />;
 }

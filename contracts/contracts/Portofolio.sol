@@ -12,23 +12,25 @@ contract Portfolio {
     string public linkedin;
     string public instagram;
     string public email;
-    string public twitter; // Fixed typo
+    string public twitter; 
 
     struct Certified {
         string title;
+        string description;
+        string institute;
         string urlVerify;
     }
 
     struct Education {
-        string institute; // Fixed typo
-        string datesAttended; // Fixed typo
+        string institute; 
+        string datesAttended;
         string program;
     }
 
     struct Experience {
         string companyName;
         string location;
-        string position; // Fixed typo
+        string position;
         string period;
         string description;
     }
@@ -42,8 +44,9 @@ contract Portfolio {
 
     struct Project {
         string category;
+        string uri;
         string title;
-        string description; // Fixed typo
+        string description; 
         string urlDemo;
         string urlRepository;
     }
@@ -71,6 +74,10 @@ contract Portfolio {
 
     function setName(string memory _name) public onlyAdmin {
         name = _name;
+    }
+
+    function getLinkedin() public view returns (string memory){
+        return linkedin;
     }
 
     function getName() public view returns (string memory){
@@ -139,6 +146,7 @@ contract Portfolio {
     function addProject(
         string memory _category,
         string memory _title,
+        string memory _uri,
         string memory _description,
         string memory _urlDemo,
         string memory _urlRepository
@@ -146,6 +154,7 @@ contract Portfolio {
         Project memory newProject = Project({
             category: _category,
             title: _title,
+            uri: _uri,
             description: _description,
             urlDemo: _urlDemo,
             urlRepository: _urlRepository
@@ -161,13 +170,17 @@ contract Portfolio {
 
     function addCertified(
         string memory _title,
+        string memory _description,
+        string memory _institute,
         string memory _urlVerify
+        
     ) public onlyAdmin {
         Certified memory newCertified = Certified({
             title: _title,
+            description: _description,
+            institute: _institute,
             urlVerify: _urlVerify
         });
-
         certifications.push(newCertified);
         emit CertifiedAdded(newCertified);
     }

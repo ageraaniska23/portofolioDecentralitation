@@ -55,6 +55,8 @@ const Skeleton = () => {
             repeatDelay: 1,
         });
     });
+
+    
     return (
         <div className="p-4 md:p-8 overflow-hidden h-full relative flex items-center justify-center">
             <div className="flex flex-wrap justify-center items-center gap-4">

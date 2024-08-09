@@ -7,7 +7,7 @@ async function main() {
   const User =  await Web3Portofolio.getAddress();
   console.log('depploy succes!!!!')
   console.log("for verify : npx hardhat verify <address> --network bsctestnet")
-  console.log(`Report: ${User}`);
+  console.log(`Contract : ${User}`);
 
 }
 

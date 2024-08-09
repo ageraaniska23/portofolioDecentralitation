@@ -1,8 +1,7 @@
 import React from 'react';
 import './Hero.css';
 import { SkeletonAccount } from '../../../components/ui/SkeletonAccount';
-import { useReadContract } from "thirdweb/react";
-import { contract } from '../../../Wallet/Config';
+import { useFetchContractData } from '../../../Data/Data';
 
 const Hero = () => {
     // Generate random stars
@@ -25,11 +24,12 @@ const Hero = () => {
         delay: Math.random() * 5 + 's' // Random delay up to 5 seconds
     }));
 
-    const { data, isLoading } = useReadContract({
-        contract,
-        method: "function getName() view returns (string)",
-        params: []
-    });
+    // Correctly call the hook and destructure the returned values
+    const { name, Linkedin, Jobdesk, isLoading } = useFetchContractData();
+
+    if (isLoading) {
+        return <div>Loading...</div>; 
+    }
 
     return (
         <div className="h-screen w-screen overflow-hidden flex flex-col items-center justify-center bg-gray-950 relative">
@@ -66,8 +66,8 @@ const Hero = () => {
                     data-aos="fade-up"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1000">
-                    {isLoading ? 'Loading...' : data || 'No Data Available'}
-                    <br /> Blockchain and Networking Enthusiast
+                    {name}
+                    <br /> {Jobdesk}
                 </h1>
                 <SkeletonAccount />
                 <div className="flex justify-center my-4 mt-3 ml-auto transition duration-700 ease-in-out transform hover:-translate-y-1 animate-bounce" data-aos="fade-up"

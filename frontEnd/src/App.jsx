@@ -28,6 +28,7 @@ const App = () => {
   return (
     <main className='min-h-screen flex flex-col items-center justify-between overflow-hidden'>
       <Navbar />
+      
       {/* HERO */}
       <Hero />
 
@@ -45,22 +46,8 @@ const App = () => {
 
       {/* CONTACT */}
       <Index />
-      <Footer />
 
-      {showAlert && (
-        <div
-          role="alert"
-          className={`fixed bottom-4 right-4 p-4 flex items-center text-sm transition-opacity duration-1000 ${showAlert ? 'opacity-100' : 'opacity-0'
-            }`}
-        >
-          <div className="card text-primary-content shadow-md bg-[#00eaff]">
-            <div className="card-body">
-              <h2 className="card-title">Information</h2>
-              <p>This website is powered by Web3 technology.</p>
-            </div>
-          </div>
-        </div>
-      )}
+      <Footer />
     </main>
   );
 };
