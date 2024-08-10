@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from 'react';
 
+const navItems = [
+    {
+        name: "Home",
+        href: "home",
+    },
+    {
+        name: "About Me",
+        href: "about-me",
+    },
+    {
+        name: "Education",
+        href: "education",
+    },
+    {
+        name: "Certificate",
+        href: "certificate",
+    },
+    {
+        name: "Portofolio",
+        href: "portofolio",
+    },
+    {
+        name: "Contact",
+        href: "contact",
+    },
+];
+
 const Navbar = () => {
     const [bgOpacity, setBgOpacity] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
 
     useEffect(() => {
         const handleScroll = () => {
@@ -12,13 +40,35 @@ const Navbar = () => {
             } else {
                 setBgOpacity(0);
             }
+
+            // Menentukan bagian mana yang sedang aktif
+            let currentSection = "home";
+            navItems.forEach((item) => {
+                const section = document.getElementById(item.href);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrolled >= sectionTop - sectionHeight / 3) {
+                        currentSection = item.href;
+                    }
+                }
+            });
+            setActiveSection(currentSection);
         };
+
         window.addEventListener('scroll', handleScroll);
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return (
         <nav className="fixed top-0 w-full z-50">
@@ -33,11 +83,15 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="hidden md:flex space-x-8 text-gray-50 font-bold">
-                    <a href="#home" className="hover:text-[#00eaff]">Home</a>
-                    <a href="#services" className="hover:text-[#00eaff]">About Me</a>
-                    <a href="#about" className="hover:text-[#00eaff]">Portofolio</a>
-                    <a href="#contact" className="hover:text-[#00eaff]">Education</a>
-                    <a href="#contact" className="hover:text-[#00eaff]">Award</a>
+                    {navItems.map((item) => (
+                        <button
+                            key={item.href}
+                            onClick={() => scrollToSection(item.href)}
+                            className={`hover:text-[#00eaff] ${activeSection === item.href ? 'text-cyan-400' : ''}`}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
                 </div>
                 <div className="md:hidden">
                     <button
@@ -91,11 +145,18 @@ const Navbar = () => {
                             />
                         </svg>
                     </button>
-                    <a href="#home" className="py-2 hover:text-[#00eaff]" onClick={() => setIsOpen(false)}>Home</a>
-                    <a href="#services" className="py-2 hover:text-[#00eaff]" onClick={() => setIsOpen(false)}>About Me</a>
-                    <a href="#about" className="py-2 hover:text-[#00eaff]" onClick={() => setIsOpen(false)}>Portofolio</a>
-                    <a href="#contact" className="py-2 hover:text-[#00eaff]" onClick={() => setIsOpen(false)}>Education</a>
-                    <a href="#contact" className="py-2 hover:text-[#00eaff]" onClick={() => setIsOpen(false)}>Award</a>
+                    {navItems.map((item) => (
+                        <button
+                            key={item.href}
+                            onClick={() => {
+                                scrollToSection(item.href);
+                                setIsOpen(false);
+                            }}
+                            className={`py-2 hover:text-[#00eaff] ${activeSection === item.href ? 'text-[#00eaff]' : ''}`}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
                 </div>
             </div>
         </nav>

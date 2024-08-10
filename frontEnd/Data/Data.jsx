@@ -67,7 +67,7 @@ export const useFetchContractData = () => {
 
     const { data: Certified, isLoading: isCertifiedLoading } = useReadContract({
         contract,
-        method: "function getCertified() view returns ((string title, string urlVerify)[])",
+        method: "function getCertified() view returns ((string title, string description, string institute, string urlVerify)[])",
         params: []
     });
 

@@ -28,11 +28,11 @@ const Hero = () => {
     const { name, Jobdesk, isLoading } = useFetchContractData();
 
     if (isLoading) {
-        return <div>Loading...</div>; 
+        return <div>Loading...</div>;
     }
 
     return (
-        <div className="h-screen w-screen overflow-hidden flex flex-col items-center justify-center bg-gray-950 relative">
+        <div className="h-screen w-screen overflow-hidden flex flex-col items-center justify-center bg-gray-950 relative" id='home'>
             {stars.map(star => (
                 <div
                     key={star.id}
@@ -61,20 +61,28 @@ const Hero = () => {
             ))}
             <div>
                 <h1
-                    className="mt-8 text-5xl text-gray-50 text-center justify-center font-bold"
+                    className="mt-8 text-4xl md:text-5xl text-gray-50 text-center justify-center font-bold"
                     style={{ textShadow: '1px 1px 1px #00eaff' }}
                     data-aos="fade-up"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1000">
-                    {name}
-                    <br /> {Jobdesk}
+                    I&apos;m {name}
+
                 </h1>
+                <h2
+                    className="mt-4 text-3xl md:text-5xl text-gray-200 text-center justify-center font-medium"
+                    style={{ textShadow: '1px 1px 1px #00eaff' }}
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="top-bottom"
+                    data-aos-duration="1200">
+                    {Jobdesk}
+                </h2>
                 <SkeletonAccount />
                 <div className="flex justify-center my-4 mt-3 ml-auto transition duration-700 ease-in-out transform hover:-translate-y-1 animate-bounce" data-aos="fade-up"
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1000">
                     <a
-                        className="relative inline-flex items-center px-10 py-4 overflow-hidden text-lg font-bold text-gray-50 border-2 border-[#00eaff] rounded-full hover:text-slate-100 group hover:bg-[#00eaff]"
+                        className="relative inline-flex mt-4 md:mt-1 items-center px-10 py-4 overflow-hidden text-lg font-bold text-gray-50 border-2 border-[#00eaff] rounded-full hover:text-slate-100 group hover:bg-[#00eaff]"
                         download="Agera Aniska"
                         target="_blank"
                         rel="noreferrer"

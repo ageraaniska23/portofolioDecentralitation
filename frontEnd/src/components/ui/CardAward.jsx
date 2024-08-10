@@ -1,123 +1,52 @@
 /* eslint-disable react/prop-types */
-"use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import { cn } from "../../../lib/utils";
+import React from "react";
 import { FaAward } from "react-icons/fa";
 
-export const InfiniteMovingCards = ({
-    items,
-    direction = "left",
-    speed = "fast",
-    pauseOnHover = true,
-    className,
-}) => {
-    const containerRef = useRef(null);
-    const scrollerRef = useRef(null);
-
-    useEffect(() => {
-        addAnimation();
-    }, []);
-
-    const [start, setStart] = useState(false);
-
-    function addAnimation() {
-        if (containerRef.current && scrollerRef.current) {
-            const scrollerContent = Array.from(scrollerRef.current.children);
-
-            scrollerContent.forEach((item) => {
-                const duplicatedItem = item.cloneNode(true);
-                if (scrollerRef.current) {
-                    scrollerRef.current.appendChild(duplicatedItem);
-                }
-            });
-
-            getDirection();
-            getSpeed();
-            setStart(true);
+export const InfiniteMovingCards = ({ items }) => {
+    const handleClick = (url, title) => {
+        console.log(`Clicked on item: ${title}, URL: ${url}`);
+        if (url) {
+            window.open(url, '_blank');
+        } else {
+            console.log("No URL provided for this item");
         }
-    }
-
-    const getDirection = () => {
-        if (containerRef.current) {
-            if (direction === "left") {
-                containerRef.current.style.setProperty("--animation-direction", "forwards");
-            } else {
-                containerRef.current.style.setProperty("--animation-direction", "reverse");
-            }
-        }
-    };
-
-    const getSpeed = () => {
-        if (containerRef.current) {
-            if (speed === "fast") {
-                containerRef.current.style.setProperty("--animation-duration", "15s");
-            } else if (speed === "normal") {
-                containerRef.current.style.setProperty("--animation-duration", "20s");
-            } else {
-                containerRef.current.style.setProperty("--animation-duration", "20s");
-            }
-        }
-    };
-
-    const handleClick = (link) => {
-        window.open(link, '_blank'); // Opens link in a new tab
     };
 
     return (
-        <div
-            ref={containerRef}
-            className={cn(
-                "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
-                className
-            )}
-        >
-            <ul
-                ref={scrollerRef}
-                className={cn(
-                    "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
-                    start && "animate-scroll",
-                    pauseOnHover && "hover:[animation-play-state:paused]"
-                )}
-            >
-                {items.map((item) => (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <ul className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-4 gap-6 justify-center" data-aos="fade-up" data-aos-duration="1500">
+                {items.map((item, index) => (
                     <li
-                        className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px] cursor-pointer"
+                        key={`${item.title}-${index}`}
+                        className="relative rounded-2xl border border-gray-800 shadow-2xl px-4 py-4 h-full"
                         style={{
                             background: "linear-gradient(180deg, var(--slate-800), var(--slate-900))",
+                            boxShadow: "0 10px 20px rgba(0, 0, 0, 0.8), 0 6px 12px rgba(0, 0, 0, 0.5)",
+                            transition: "transform 0.3s, box-shadow 0.3s",
                         }}
-                        key={item.title}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "translateY(-5px)";
+                            e.currentTarget.style.boxShadow =
+                                "0 15px 25px rgba(0, 0, 0, 1), 0 10px 20px rgba(0, 0, 0, 0.7)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow =
+                                "0 10px 20px rgba(0, 0, 0, 0.8), 0 6px 12px rgba(0, 0, 0, 0.5)";
+                        }}
                     >
-                        <blockquote>
-                            <div
-                                aria-hidden="true"
-                                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
-                            ></div>
-                            <div className="relative z-20 mb-4">
-                                <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                                    {item.title}
-                                </span>
-                            </div>
-                            <div className="relative z-20">
-                                <span className="text-sm leading-[1.6] text-gray-100 font-normal">
-                                    {item.quote}
-                                </span>
-                            </div>
-                            <div className="relative z-20 mt-6 flex flex-row items-center">
-                                <span className="flex flex-col gap-1">
-                                    <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                                        {item.name}
-                                    </span>
-                                </span>
-                            </div>
-                            <button
-                                onClick={() => handleClick(item.link)}
-                                className="absolute bottom-4 right-4 bg-transparent text-[#00eaff] px-4 py-2 rounded-md "
-                            >
-                                Visit Link
-                            </button>
-                            <FaAward className="absolute top-4 right-4 text-yellow-500 text-3xl z-30" />
-                        </blockquote>
+                        <div className="mb-2">
+                            <span className="text-sm text-gray-400 font-semibold">{item.title}</span>
+                        </div>
+                        <div className="mt-auto">
+                            <span className="text-sm text-gray-400">{item.name}</span>
+                        </div>
+                        <button
+                            onClick={() => handleClick(item.link, item.title)}
+                            className="absolute bottom-2 right-2 bg-blue-500 text-white p-2 text-sm rounded-full hover:bg-blue-600 transition-colors"
+                        >
+                            <FaAward className="text-yellow-400 text-lg" />
+                        </button>
                     </li>
                 ))}
             </ul>

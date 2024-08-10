@@ -70,7 +70,7 @@ const Skeleton = () => {
 
     
     return (
-        <div className="p-4 md:p-8 overflow-hidden h-full relative flex items-center justify-center">
+        <div className="p-2 md:p-8 overflow-hidden h-full relative flex items-center justify-center mt-2 md:mt-1">
             <div className="flex flex-wrap justify-center items-center gap-4">
                 <Container className="h-12 w-12 md:h-16 md:w-16 circle-1 hover:animate-pulse" href={InstagramUrl}>
                     <FaInstagram className="h-6 w-6 md:h-8 md:w-8 dark:text-[#00eaff]" />
@@ -84,7 +84,7 @@ const Skeleton = () => {
                 <Container className="h-16 w-16 md:h-24 md:w-24 circle-4 hover:animate-pulse" href={discordUrl}>
                     <FaDiscord  className="h-8 w-8 md:h-12 md:w-12 dark:text-[#00eaff]" />
                 </Container>
-                <Container className="h-12 w-12 md:h-16 md:w-16 circle-5 hover:animate-pulse" href={emailUrl}>
+                <Container className="h-12 w-12 md:h-16 md:w-16 circle-5 hover:animate-pulse" href={`mailto:${emailUrl}`}>
                     <BiLogoGmail className="h-6 w-6 md:h-8 md:w-8 dark:text-[#00eaff]" />
                 </Container>
             </div>

@@ -41,7 +41,7 @@ export function CardPortofolio() {
     const dataToDisplay = formattedData.filter(item => item.category === activeTab);
 
     return (
-        <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gray-950">
+        <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gray-950" id="portofolio">
             <h1 className="text-3xl font-bold text-white mb-6 italic">Portofolio</h1>
             <SwitchToggle onTabChange={handleTabChange} />
             <div className="flex flex-wrap justify-center gap-10 p-6 max-w-12xl items-stretch" data-aos="fade-up" data-aos-duration="1500">
