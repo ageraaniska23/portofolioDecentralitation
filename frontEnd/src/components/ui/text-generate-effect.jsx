@@ -2,8 +2,8 @@
 "use client";
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
-import { cn } from "../../lib/utils";
-import { useFetchContractData } from "../../Data/Data";
+import { cn } from "../../../lib/utils";
+import { useFetchContractData } from "../../../Data/Data";
 
 export const TextGenerateEffect = ({
     words,

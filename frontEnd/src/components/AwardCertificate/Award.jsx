@@ -1,5 +1,5 @@
 import React from "react";
-import { InfiniteMovingCards } from "../../../components/ui/CardAward";
+import { InfiniteMovingCards } from "../ui/CardAward";
 
 export function InfiniteMovingCardsDemo() {
     return (

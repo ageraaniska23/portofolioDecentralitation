@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "../../../lib/utils";
 import { FaAward } from "react-icons/fa";
 
 export const InfiniteMovingCards = ({

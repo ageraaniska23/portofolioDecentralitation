@@ -1,6 +1,6 @@
 import React from 'react';
 import ThreeScene from '../lanyard/ThreeScene';
-import { TextGenerateEffectDemo } from '../../../components/ui/text-generate-effect';
+import { TextGenerateEffectDemo } from '../ui/text-generate-effect';
 import Github from '../GithubCalendar/GithubCalendar';
 import { Skill } from '../Skill/Skill';
 

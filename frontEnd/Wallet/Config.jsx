@@ -6,7 +6,6 @@ const clientId = import.meta.env.VITE_THIRDWEB_CLIENT_ID;
 const secretKey = import.meta.env.VITE_THIRDWEB_SECRET_KEY;
 
 const wallets = [
-    // jenis wallet
     createWallet("io.metamask"),
     createWallet("com.trustwallet.app"),
     walletConnect(),

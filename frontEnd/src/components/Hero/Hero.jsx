@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-import { SkeletonAccount } from '../../../components/ui/SkeletonAccount';
+import { SkeletonAccount } from '../ui/SkeletonAccount';
 import { useFetchContractData } from '../../../Data/Data';
 
 const Hero = () => {
