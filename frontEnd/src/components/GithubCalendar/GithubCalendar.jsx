@@ -16,7 +16,7 @@ const Github = () => {
                 username="ageraaniska23" 
                 fontSize={12} 
                 showWeekdayLabels={true} 
-                blockSize={isMobile ? 2 : 7} 
+                blockSize={isMobile ? 2 : 9} 
                 blockRadius={4} 
             />
         </div>

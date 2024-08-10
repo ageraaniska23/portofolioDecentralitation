@@ -25,6 +25,7 @@ contract Portfolio {
         string institute; 
         string datesAttended;
         string program;
+        string description;
     }
 
     struct Experience {
@@ -192,12 +193,14 @@ contract Portfolio {
     function addEducation(
         string memory _institute,
         string memory _datesAttended,
-        string memory _program
+        string memory _program,
+        string memory _description
     ) public onlyAdmin {
         Education memory newEducation = Education({
             institute: _institute,
             datesAttended: _datesAttended,
-            program: _program
+            program: _program,
+            description: _description
         });
 
         educationBackground.push(newEducation);

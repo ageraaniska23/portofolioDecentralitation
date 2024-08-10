@@ -25,7 +25,7 @@ const Hero = () => {
     }));
 
     // Correctly call the hook and destructure the returned values
-    const { name, Linkedin, Jobdesk, isLoading } = useFetchContractData();
+    const { name, Jobdesk, isLoading } = useFetchContractData();
 
     if (isLoading) {
         return <div>Loading...</div>; 

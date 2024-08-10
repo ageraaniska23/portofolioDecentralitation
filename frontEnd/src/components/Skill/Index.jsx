@@ -14,6 +14,7 @@ const Timeline = () => {
         year: education.datesAttended,
         title: education.institute,
         Programs: education.program,
+        descriptions: education.description,
         color: colors[index % 2],        // Alternates between cyan-400 and blue-400
         circleColor: colors[index % 2],  // Alternates between cyan-400 and blue-400
     }));
@@ -33,6 +34,7 @@ const Timeline = () => {
                                 </div>
                                 <h4 className="text-white font-semibold mb-1">{item.title}</h4>
                                 <p className="text-white">{item.Programs}</p>
+                                <p className="text-white opacity-80 mt-1">{item.descriptions}</p>
                             </div>
                             <div className="absolute md:left-1/2 transform md:-translate-x-1/2 bg-white border-2 rounded-full w-6 h-6 flex items-center justify-center">
                                 <div className={`rounded-full w-3 h-3 ${item.circleColor}`}></div>

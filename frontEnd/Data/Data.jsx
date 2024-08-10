@@ -12,7 +12,7 @@ export const useFetchContractData = () => {
         method: "function getAboutMe() view returns (string)",
         params: []
     });
-    
+
     const { data: Jobdesk, isLoading: isJobdeskLoading } = useReadContract({
         contract,
         method: "function getJobdesk() view returns (string)",
@@ -21,7 +21,7 @@ export const useFetchContractData = () => {
 
     const { data: projoect, isLoading: isProjectLoading } = useReadContract({
         contract,
-        method: "function getProject() view returns ((string category, string title, string description, string urlDemo, string urlRepository)[])",
+        method: "function getProject() view returns ((string category, string uri, string title, string description, string urlDemo, string urlRepository)[])",
         params: []
     });
 
@@ -37,8 +37,9 @@ export const useFetchContractData = () => {
         method: "function getEmail() view returns (string)",
         params: []
     });
-    const { data: Twiter, isLoading: isTwiterLoading } = useReadContract({
+    const { data: discord, isLoading: isdiscordLoading } = useReadContract({
         contract,
+        // rename to discord
         method: "function getTwiter() view returns (string)",
         params: []
     });
@@ -72,11 +73,12 @@ export const useFetchContractData = () => {
 
     const { data: Education, isLoading: isEducationLoading } = useReadContract({
         contract,
-        method: "function getEducation() view returns ((string institute, string datesAttended, string program)[])",
+        method: "function getEducation() view returns ((string institute, string datesAttended, string program, string description)[])",
         params: []
     });
 
-    const isLoading = isNameLoading || isEducationLoading || isAboutMeLoading || isCertifiedLoading || isExperienceLoading || isBlogLoading || isEmailLoading || isProjectLoading || isTwiterLoading || isLinkedinLoading || isJobdeskLoading || isInstagramLoading || isGithubLoading;
 
-    return { name, aboutMe, Education, blog, email, isLoading, projoect, Twiter, Linkedin, Jobdesk, Instagram, Github, Experience, Certified };
+    const isLoading = isNameLoading || isEducationLoading || isAboutMeLoading || isCertifiedLoading || isExperienceLoading || isBlogLoading || isEmailLoading || isProjectLoading || isdiscordLoading || isLinkedinLoading || isJobdeskLoading || isInstagramLoading || isGithubLoading;
+
+    return { name, aboutMe, Education, blog, email, isLoading, projoect, discord, Linkedin, Jobdesk, Instagram, Github, Experience, Certified };
 };

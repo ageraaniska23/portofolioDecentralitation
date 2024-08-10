@@ -4,9 +4,9 @@
 import { animate } from "framer-motion";
 import React, { useEffect } from "react";
 import { cn } from "../../../lib/utils";
-import { FaLinkedin, FaInstagram, FaGithubAlt } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
+import { FaLinkedin, FaInstagram, FaGithubAlt, FaDiscord  } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
+import { useFetchContractData } from "../../../Data/Data";
 
 export function SkeletonAccount() {
     return (
@@ -56,23 +56,35 @@ const Skeleton = () => {
         });
     });
 
+    const { Linkedin, discord, Instagram, Github, email, isLoading } = useFetchContractData();
+
+    if (isLoading) {
+        return <div>Loading...</div>; 
+    }
+
+    const linkedinUrl = Linkedin.startsWith('http') ? Linkedin : `https://${Linkedin}`;
+    const discordUrl = discord.startsWith('http') ? discord : `https://${discord}`;
+    const InstagramUrl = Instagram.startsWith('http') ? Instagram : `https://${Instagram}`;
+    const GithubUrl = Github.startsWith('http') ? Github : `https://${Github}`;
+    const emailUrl = email.startsWith('http') ? email : `https://${email}`;
+
     
     return (
         <div className="p-4 md:p-8 overflow-hidden h-full relative flex items-center justify-center">
             <div className="flex flex-wrap justify-center items-center gap-4">
-                <Container className="h-12 w-12 md:h-16 md:w-16 circle-1 hover:animate-pulse" href="https://www.instagram.com">
+                <Container className="h-12 w-12 md:h-16 md:w-16 circle-1 hover:animate-pulse" href={InstagramUrl}>
                     <FaInstagram className="h-6 w-6 md:h-8 md:w-8 dark:text-[#00eaff]" />
                 </Container>
-                <Container className="h-16 w-16 md:h-24 md:w-24 circle-2 hover:animate-pulse" href="https://www.github.com">
+                <Container className="h-16 w-16 md:h-24 md:w-24 circle-2 hover:animate-pulse" href={GithubUrl}>
                     <FaGithubAlt className="h-8 w-8 md:h-12 md:w-12 dark:text-[#00eaff]" />
                 </Container>
-                <Container className="h-20 w-20 md:h-32 md:w-32 circle-3 hover:animate-pulse" href="https://www.linkedin.com">
+                <Container className="h-20 w-20 md:h-32 md:w-32 circle-3 hover:animate-pulse" href={linkedinUrl}>
                     <FaLinkedin className="h-10 w-10 md:h-16 md:w-16 dark:text-[#00eaff]" />
                 </Container>
-                <Container className="h-16 w-16 md:h-24 md:w-24 circle-4 hover:animate-pulse" href="https://www.twitter.com">
-                    <BsTwitterX className="h-8 w-8 md:h-12 md:w-12 dark:text-[#00eaff]" />
+                <Container className="h-16 w-16 md:h-24 md:w-24 circle-4 hover:animate-pulse" href={discordUrl}>
+                    <FaDiscord  className="h-8 w-8 md:h-12 md:w-12 dark:text-[#00eaff]" />
                 </Container>
-                <Container className="h-12 w-12 md:h-16 md:w-16 circle-5 hover:animate-pulse" href="https://www.gmail.com">
+                <Container className="h-12 w-12 md:h-16 md:w-16 circle-5 hover:animate-pulse" href={emailUrl}>
                     <BiLogoGmail className="h-6 w-6 md:h-8 md:w-8 dark:text-[#00eaff]" />
                 </Container>
             </div>

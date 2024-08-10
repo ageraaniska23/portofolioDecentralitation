@@ -2,48 +2,8 @@
 "use client";
 import React, { useState } from "react";
 import { BackgroundGradient } from "../ui/CardGradient";
-import img1 from "./1.jpg";
-import img2 from "./2.png";
 import SwitchToggle from "../ToogleButton/Button";
-
-const BlockchainData = [
-    {
-        imgSrc: img1,
-        title: "Air Jordan 4 Retro Reimagined",
-        description: "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering raffles and waiting for the official releases.",
-        repository: "https://github.com/user/repository1",
-        demo: "https://example.com/demo1"
-    },
-    {
-        imgSrc: img2,
-        title: "Air Jordan 4 Retro Reimagined",
-        description: "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering raffles and waiting for the official releases.",
-        repository: "https://github.com/user/repository2",
-        demo: "https://example.com/demo2"
-    },
-    {
-        imgSrc: "",
-        title: "Air Jordan 4 Retro Reimagined",
-        description: "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering raffles and waiting for the official releases.",
-        repository: "https://github.com/user/repository2",
-        demo: "https://example.com/demo2"
-    },
-];
-
-const NetworkData = [
-    {
-        imgSrc: img1,
-        title: "Air Jordan 4 Retro Reimagined",
-        description: "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering raffles and waiting for the official releases.",
-        repository: "https://github.com/user/repository1",
-    },
-    {
-        imgSrc: "",
-        title: "Air Jordan 4 Retro Reimagined",
-        description: "The Air Jordan 4 Retro Reimagined Bred will release on Saturday, February 17, 2024. Your best opportunity to get these right now is by entering raffles and waiting for the official releases.",
-        repository: "https://github.com/user/repository2",
-    },
-];
+import { useFetchContractData } from "../../../Data/Data";
 
 const Tooltip = ({ text }) => (
     <div className="absolute bg-white dark:bg-zinc-900 text-black dark:text-neutral-200 p-4 rounded shadow-lg text-sm max-w-xs z-50">
@@ -58,7 +18,27 @@ export function CardPortofolio() {
         setActiveTab(tab);
     };
 
-    const dataToDisplay = activeTab === 'Blockchain' ? BlockchainData : NetworkData;
+    const { projoect, isLoading } = useFetchContractData();
+
+    if (isLoading) {
+        return <div>Loading...</div>; 
+    }
+
+    // URL prefix for IPFS
+    const IPFS_GATEWAY_URL = "https://gateway.pinata.cloud/ipfs/";
+
+    // Format the contract data
+    const formattedData = projoect?.map( project => ({
+        imgSrc: project.uri.startsWith("ipfs://") ? `${IPFS_GATEWAY_URL}${project.uri.slice(7)}` : project.uri || "",
+        title: project.title,
+        description: project.description,
+        repository: project.urlRepository,
+        demo: project.urlDemo,
+        category: project.category
+    })) || [];
+
+    // Filter data based on the active tab
+    const dataToDisplay = formattedData.filter(item => item.category === activeTab);
 
     return (
         <div className="min-h-screen w-screen flex flex-col items-center justify-center bg-gray-950">
@@ -87,7 +67,7 @@ export function CardPortofolio() {
                                 </div>
                             </div>
                             <div className="flex space-x-2 justify-end mt-12">
-                                {activeTab === 'Blockchain' && card.demo && (
+                                {card.demo && (
                                     <a href={card.demo} target="_blank" rel="noopener noreferrer" className="rounded-full pl-4 pr-4 py-1 text-white flex items-center space-x-1 bg-black text-xs hover:text-gray-950 font-bold hover:bg-[#00eaff] dark:bg-zinc-800">
                                         <span>Demo</span>
                                     </a>
