@@ -2,8 +2,8 @@
 "use client";
 import React, { useState } from "react";
 import { BackgroundGradient } from "../../../components/ui/CardGradient";
-import img1 from "../../assets/1.jpg";
-import img2 from "../../assets/2.png";
+import img1 from "../../../public/1.jpg";
+import img2 from "../../../public/2.png";
 import SwitchToggle from "../ToogleButton/Button";
 
 const BlockchainData = [
