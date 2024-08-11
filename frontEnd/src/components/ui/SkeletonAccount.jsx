@@ -66,7 +66,7 @@ const Skeleton = () => {
     const discordUrl = discord.startsWith('http') ? discord : `https://${discord}`;
     const InstagramUrl = Instagram.startsWith('http') ? Instagram : `https://${Instagram}`;
     const GithubUrl = Github.startsWith('http') ? Github : `https://${Github}`;
-    const emailUrl = email.startsWith('http') ? email : `https://${email}`;
+    const emailUrl = email.startsWith('http') ? email : {email};
 
     
     return (

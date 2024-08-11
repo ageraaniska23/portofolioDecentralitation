@@ -1,30 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const navItems = [
-    {
-        name: "Home",
-        href: "home",
-    },
-    {
-        name: "About Me",
-        href: "about-me",
-    },
-    {
-        name: "Education",
-        href: "education",
-    },
-    {
-        name: "Certificate",
-        href: "certificate",
-    },
-    {
-        name: "Portofolio",
-        href: "portofolio",
-    },
-    {
-        name: "Contact",
-        href: "contact",
-    },
+    { name: "Home", href: "home" },
+    { name: "About Me", href: "about-me" },
+    { name: "Service", href: "service" },
+    { name: "Education", href: "education" },
+    { name: "Certificate", href: "certificate" },
+    { name: "Portfolio", href: "portfolio" },
+    { name: "Contact", href: "contact" },
 ];
 
 const Navbar = () => {
@@ -41,7 +24,6 @@ const Navbar = () => {
                 setBgOpacity(0);
             }
 
-            // Menentukan bagian mana yang sedang aktif
             let currentSection = "home";
             navItems.forEach((item) => {
                 const section = document.getElementById(item.href);
@@ -77,12 +59,12 @@ const Navbar = () => {
                 style={{ opacity: bgOpacity }}
             ></div>
             <div className="relative flex justify-between items-center px-4 py-4 max-w-7xl mx-auto">
-                <div className="flex items-center space-x-2">
-                    <div className="font-bold flex items-center italic font-serif">
+                <div className="flex items-center">
+                    <div className="font-bold italic font-serif">
                         <span className="text-[#00eaff] text-4xl">Agera</span>
                     </div>
                 </div>
-                <div className="hidden md:flex space-x-8 text-gray-50 font-bold">
+                <div className="hidden md:flex space-x-4 text-gray-50 font-bold">
                     {navItems.map((item) => (
                         <button
                             key={item.href}

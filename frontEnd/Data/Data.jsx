@@ -1,7 +1,11 @@
+
 import { useReadContract } from "thirdweb/react";
 import { contract } from '../Wallet/Config';
 
 export const useFetchContractData = () => {
+
+    const Cv = "https://drive.google.com/uc?export=download&id=1TZ8qUh7t33ys-s9PrlJsAqeaE8Z46hlk";
+
     const { data: name, isLoading: isNameLoading } = useReadContract({
         contract,
         method: "function getName() view returns (string)",
@@ -80,5 +84,5 @@ export const useFetchContractData = () => {
 
     const isLoading = isNameLoading || isEducationLoading || isAboutMeLoading || isCertifiedLoading || isExperienceLoading || isBlogLoading || isEmailLoading || isProjectLoading || isdiscordLoading || isLinkedinLoading || isJobdeskLoading || isInstagramLoading || isGithubLoading;
 
-    return { name, aboutMe, Education, blog, email, isLoading, projoect, discord, Linkedin, Jobdesk, Instagram, Github, Experience, Certified };
+    return { name, aboutMe, Education, blog, email, isLoading, projoect, discord, Linkedin, Jobdesk, Instagram, Github, Experience, Certified, Cv };
 };

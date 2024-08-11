@@ -35,7 +35,7 @@ const config: HardhatUserConfig = {
       allowUnlimitedContractSize: true
     },
     polygon_amoy: {
-      url: "https://80002.rpc.thirdweb.com/205f00cfc2aabd5a75af44f0bfd491ff",
+      url: "https://80002.rpc.thirdweb.com/564c9ad6b012ea34b7d44b5edc9bd6ef",
       accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     }
     // mumbaipolygon: {

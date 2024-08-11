@@ -25,7 +25,7 @@ const Hero = () => {
     }));
 
     // Correctly call the hook and destructure the returned values
-    const { name, Jobdesk, isLoading } = useFetchContractData();
+    const { name, Cv, Jobdesk, isLoading } = useFetchContractData();
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -86,7 +86,7 @@ const Hero = () => {
                         download="Agera Aniska"
                         target="_blank"
                         rel="noreferrer"
-                        href="/path-to-your-cv.pdf" // Provide actual path to your CV
+                        href={Cv} 
                     >
                         <span className="absolute left-0 block w-full h-0 transition-all bg-gray-900 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-500 ease"></span>
                         <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
