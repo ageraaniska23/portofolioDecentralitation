@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 import Index from './components/Contact/Index';
 import Timeline from './components/Skill/Index';
 import { FaWallet } from 'react-icons/fa';
-import ServicesSection from './components/Serv/Service';
+import Experience from './components/Experience/Experience';
 
 const App = () => {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -53,7 +53,8 @@ const App = () => {
           <Navbar />
           <Hero />
           <LaynardHero />
-          <ServicesSection/>
+          <Experience/>
+          
           <Timeline />
           <InfiniteMovingCardsDemo />
           <CardPortofolio />

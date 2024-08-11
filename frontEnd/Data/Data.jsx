@@ -63,7 +63,7 @@ export const useFetchContractData = () => {
         params: []
     });
 
-    const { data: Experience, isLoading: isExperienceLoading } = useReadContract({
+    const { data: experience, isLoading: isExperienceLoading } = useReadContract({
         contract,
         method: "function getExperience() view returns ((string companyName, string location, string position, string period, string description)[])",
         params: []
@@ -84,5 +84,5 @@ export const useFetchContractData = () => {
 
     const isLoading = isNameLoading || isEducationLoading || isAboutMeLoading || isCertifiedLoading || isExperienceLoading || isBlogLoading || isEmailLoading || isProjectLoading || isdiscordLoading || isLinkedinLoading || isJobdeskLoading || isInstagramLoading || isGithubLoading;
 
-    return { name, aboutMe, Education, blog, email, isLoading, projoect, discord, Linkedin, Jobdesk, Instagram, Github, Experience, Certified, Cv };
+    return { name, aboutMe, Education, blog, email, isLoading, projoect, discord, Linkedin, Jobdesk, Instagram, Github, experience, Certified, Cv };
 };
