@@ -4,7 +4,7 @@ import { contract } from '../Wallet/Config';
 
 export const useFetchContractData = () => {
 
-    const Cv = "https://drive.google.com/uc?export=download&id=1TZ8qUh7t33ys-s9PrlJsAqeaE8Z46hlk";
+    const Cv = "https://drive.google.com/file/d/1vUWQz6mJnzpGb53whGNEmv158zCS7YGv/view?usp=sharing";
 
     const { data: name, isLoading: isNameLoading } = useReadContract({
         contract,
