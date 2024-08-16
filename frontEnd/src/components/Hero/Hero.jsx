@@ -2,6 +2,7 @@ import React from 'react';
 import './Hero.css';
 import { SkeletonAccount } from '../ui/SkeletonAccount';
 import { useFetchContractData } from '../../../Data/Data';
+import LoadingAnimation from '../LoadingAnimation/LoadAnimation';
 
 const Hero = () => {
     // Generate random stars
@@ -28,7 +29,7 @@ const Hero = () => {
     const { name, Cv, Jobdesk, isLoading } = useFetchContractData();
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <LoadingAnimation onComplete={() => { }} />;
     }
 
     return (
@@ -67,7 +68,6 @@ const Hero = () => {
                     data-aos-anchor-placement="top-bottom"
                     data-aos-duration="1000">
                     I&apos;m {name}
-
                 </h1>
                 <h2
                     className="mt-4 text-3xl md:text-5xl text-gray-200 text-center justify-center font-medium"
@@ -86,7 +86,7 @@ const Hero = () => {
                         download="Agera Aniska"
                         target="_blank"
                         rel="noreferrer"
-                        href={Cv} 
+                        href={Cv}
                     >
                         <span className="absolute left-0 block w-full h-0 transition-all bg-gray-900 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-500 ease"></span>
                         <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
