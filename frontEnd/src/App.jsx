@@ -9,6 +9,7 @@ import Index from './components/Contact/Index';
 import Timeline from './components/Skill/Index';
 import Experience from './components/Experience/Experience';
 import LoadingAnimation from './components/LoadingAnimation/LoadAnimation';
+import { Analytics } from '@vercel/analytics/react';
 
 const App = () => {
   const [showAnimation, setShowAnimation] = useState(true);
@@ -25,6 +26,7 @@ const App = () => {
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-between overflow-hidden">
+      <Analytics />
       {showAnimation ? (
         <LoadingAnimation onComplete={() => setShowAnimation(false)} />
       ) : (
