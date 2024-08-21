@@ -21,7 +21,7 @@
     "aos": "^3.0.0-beta.6",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
-    "framer-motion": "^11.3.23",
+    "framer-motion": "^11.3.28",
     "github-calendar": "^2.3.4",
     "leva": "^0.9.35",
     "meshline": "^3.3.1",
